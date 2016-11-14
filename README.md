@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample Rails application
 
-Things you may want to cover:
+Application demonstrates the usage of Godmin gem, which was used to create the admin panel.
 
-* Ruby version
+Application allows the admin user to:
+- create courses
+- create course questions
+- add answers to the questions
 
-* System dependencies
+Additional features are:
+- uploading files, that can be attached to courses, with Carrierwave gem
+- editing the content of the questions with a WYSIWYG editor - CKEditor
 
-* Configuration
+Admin can also create static pages with custom content and add/manage other admin users.
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
