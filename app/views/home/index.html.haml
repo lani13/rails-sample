@@ -1,0 +1,47 @@
+.section.section-pricing
+  .parallax.filter.filter-color-black
+    .image{style: "background-image: url(https://uc.uxpin.com/files/575648/572354/norway-1-1481570-1.jpg"}
+
+    .container
+      .content
+        .title-area
+          %h2 kursy HMS online
+          .separator.line-separator ✻
+        .row
+          .col-md-10.col-md-offset-1
+            - if @courses.empty?
+              .col-sm-12.text-center
+                %h3
+                  aktualnie nie mamy
+                  %br
+                  żadnych aktywnych kursów
+                zapraszamy niedługo...
+            - else
+              - @courses.each_with_index do |course, index|
+                .col-sm-4
+                  .card.card-price{:class => [('card-white' if index % 3 == 1), ('card-black' if index % 3 == 2)]}
+                    .content
+                      %h4.title-header
+                        = course.name # DAGLING LEDER
+                        %br/
+                        %small.subtitle-header
+                          = course.short_description # kierownicy
+                      .price
+                        %i.fa kr
+                        .number.text-danger
+                          = course.price
+
+                      %p.text-description
+                        = course.description # kierownicy
+                        -# Dla osób zarządzających w przedsiębiorstwie
+                        -# mamy szkolenie dla kierowników.
+                      .text-center
+                        = link_to t('.select'), new_account_path, class: 'btn btn-danger btn-round btn-fill'
+.section.section-info
+  .container
+    .row
+      .title-area
+        %h2 To tylko przykładowa strona początkowa
+        .separator.separator-danger ✻
+        .description
+          Niedługo umieścimy tu więcej informacji.

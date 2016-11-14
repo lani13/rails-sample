@@ -1,0 +1,39 @@
+box: ruby:2.3.0
+services:
+   - id: postgres
+     env:
+       POSTGRES_PASSWORD: $APP_POSTGRES_PASSWORD
+       POSTGRES_USER: $APP_POSTGRES_USER
+       POSTGRES_DB: $APP_POSTGRES_DB
+build:
+    steps:
+        - script:
+          name: Clear bundle cache
+          code: rm -rf /pipeline/cache/bundle-install/ruby/2.3.0/cache/bundler/git/*
+        - script:
+            name: nokogiri
+            code: bundle config build.nokogiri --use-system-libraries
+        - bundle-install
+
+        - rails-database-yml
+
+        - script:
+            name: echo ruby information
+            code: |
+                echo "ruby version $(ruby --version) running!"
+                echo "from location $(which ruby)"
+                echo -p "gem list: $(gem list)"
+        - script:
+            name: Set up db
+            code: bundle exec rake db:schema:load RAILS_ENV=test
+
+        # - script:
+        #     name: rspec
+        #     code: bundle exec rspec
+
+deploy:
+    steps:
+        - heroku-deploy
+        - script:
+            name: Update database
+            code: heroku run rake db:migrate --app $TARGET_NAME

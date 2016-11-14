@@ -1,0 +1,6 @@
+#navbar-example.collapse.navbar-collapse
+  %ul.nav.navbar-nav
+    - @course.questions.each_with_index do |question, index|
+      %li{class: ('active' if index+1 == params[:question_number])}
+        %a{:href => "#"}
+          = index+1

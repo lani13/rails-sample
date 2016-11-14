@@ -1,0 +1,9 @@
+<%= render partial: "breadcrumb" %>
+
+<%= render partial: "errors", locals: { errors: @resource.errors } %>
+
+<% if params[:question_id] %>
+  <%= render partial: "shared/new_form" %>
+<% else %>
+  <%= render partial: "form" %>
+<% end %>

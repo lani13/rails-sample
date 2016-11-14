@@ -1,0 +1,45 @@
+<div id="table" class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <% if @subresource_service.include_batch_actions? %>
+          <th></th>
+        <% end %>
+        <% @subresource_service.attrs_for_index.each do |attr| %>
+          <th class="column-<%= attr %>">
+            <%= column_header attr %>
+          </th>
+        <% end %>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subresources.each do |subresource| %>
+        <tr data-subresource-id="<%= subresource.id %>" >
+          <% if @subresource_service.include_batch_actions? %>
+            <td align="center" data-behavior="batch-actions-checkbox-container">
+              <%= check_box_tag "batch_action[items][#{subresource.id}]", nil, nil,
+                data: { behavior: "batch-actions-checkbox" } %>
+            </td>
+          <% end %>
+          <% @subresource_service.attrs_for_index.each do |attr| %>
+            <td>
+              <%= column_value(subresource, attr) %>
+            </td>
+          <% end %>
+          <td>
+            <%= render partial: "#{controller_path}/columns/actions", locals: { resource: subresource } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <% if policy(@subresource_service.build_resource({})).new? %>
+    <%= link_to t("helpers.submit.create", model: @model), @path, class: "btn btn-default" %>
+  <% end %>
+</div>
+
+

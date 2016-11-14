@@ -1,0 +1,11 @@
+.row
+  .col-md-4.col-md-offset-4
+    %h2
+      = t('.register')
+    = render 'form'
+    .text-center
+      %hr
+      %p
+        = t('or')
+    %p
+      = link_to t('login'), account_login_path, class: 'btn btn-fill'

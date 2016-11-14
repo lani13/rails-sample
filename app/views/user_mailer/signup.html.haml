@@ -1,0 +1,8 @@
+%h1
+  = t '.registered'
+
+%p
+  = t('.welcome', first_name: @user['first_name'])
+%p
+  = t '.your_password_is'
+  = @user['password']

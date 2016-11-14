@@ -1,0 +1,66 @@
+pl:
+  godmin:
+    navbar:
+      users: Uczestnicy
+      courses: Kursy
+      questions: Pytania
+      answers: Odpowiedzi
+      attachments: Załączniki
+      pages: Strony
+      admin_users: Administratorzy  
+    title: HMS
+    questions: Pytania
+    answers: Odpowiedzi
+    attachments: Załączniki
+    admin_users: Administratorzy
+    batch_actions:
+      buttons:
+        select_all: Select all
+        deselect_all: Deselect all
+      confirm_message: Are you sure?
+    filters:
+      select:
+        placeholder:
+          one: Select something
+          many: Select something
+      buttons:
+        apply: Filtruj
+        clear: Wyczyść filtr
+    actions:
+      label: Akcje
+      return_to_course: Powrót do kursu
+      return_to_question: Powrót do pytania
+      create: Utwórz
+      create_title: Utwórz %{resource}
+      download: "Pobierz"
+      show: Wyświetl
+      show_title: Pokaż %{resource}
+      edit: Edytuj
+      edit_title: Edytuj %{resource}
+      destroy: Usuń
+      destroy_title: Usuń %{resource}
+      confirm_message: Na pewno?
+      export: Eksport
+      export_as: Jako
+    sessions:
+      sign_in: Zaloguj
+      sign_out: Wyloguj
+      signed_in: Zalogowano
+      signed_out: Wylogowano
+      failed_sign_in: Niepoprawne dane logowania
+    flash:
+      create: "Utworzono %{resource}"
+      update: "Zaktualizowano %{resource}"
+      destroy: "Usunięto %{resource}"
+      batch_action: "%{number_of_records} %{resource} were affected"
+    pagination:
+      first: "Początek"
+      last: "Koniec"
+      entries:
+        zero: "Nie znaleziono %{resource}"
+        other: "Pokazuje %{count} z %{total} %{resource}"
+    datetimepickers:
+      datepicker: ! "%d/%m/%Y"
+      datetimepicker: ! "%d/%m/%Y %H:%M"
+  user:
+    created: Konto zostało zarejestrowane.

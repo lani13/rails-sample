@@ -1,0 +1,31 @@
+
+.container
+  .row
+    .col-md-6
+      %h2
+        %ul
+          %li
+            %span.pe-7s-unlock Rejestracja
+          %li
+            %span.pe-7s-lock Płatność
+          %li
+            %span.pe-7s-lock Kurs
+          %li
+            %span.pe-7s-lock Certyfikat
+
+    .col-md-6
+      -# @TODO
+      .section.text-center{style: 'color: black'}
+        %h2
+          = t '.payment'
+        .line
+          %label
+            = t '.credit_card_number'
+          %input
+        .line
+          %label
+            = t '.credit_card_owner'
+          %input
+        .line
+          .btn
+            = link_to t('.pay'), course_path(1)

@@ -1,0 +1,21 @@
+
+.container
+  .row
+    .col-md-6
+      %h2
+        %ul
+          %li
+            %span.pe-7s-unlock Rejestracja
+          %li
+            %span.pe-7s-unlock Płatność
+          %li
+            %span.pe-7s-unlock Kurs
+          %li
+            %span.pe-7s-unlock Certyfikat
+
+    .col-md-6
+      -# @TODO
+      .section{style: 'color: black'}
+        %h2
+          = t('certificate download')
+        = link_to Course.first.name, '#', class: 'btn btn-info  btn-lg btn-fill'

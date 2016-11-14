@@ -1,0 +1,49 @@
+<div id="table" class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <% if @attachments_service.include_batch_actions? %>
+          <th></th>
+        <% end %>
+        <% @attachments_service.attrs_for_index.each do |attr| %>
+          <th class="column-<%= attr %>">
+            <%= column_header attr %>
+          </th>
+        <% end %>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attachments.each do |attachment| %>
+        <tr data-attachment-id="<%= attachment.id %>" >
+          <% if @attachments_service.include_batch_actions? %>
+            <td align="center" data-behavior="batch-actions-checkbox-container">
+              <%= check_box_tag "batch_action[items][#{attachment.id}]", nil, nil,
+                data: { behavior: "batch-actions-checkbox" } %>
+            </td>
+          <% end %>
+          <% @attachments_service.attrs_for_index.each do |attr| %>
+            <td>
+              <% if attr == :attachment %>
+                <%= link_to t('godmin.actions.download'), attachment.attachment.url, { target: '_blank' } %>
+              <% else %>
+                <%= column_value(attachment, attr) %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= render partial: "#{controller_path}/columns/actions", locals: { resource: attachment } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <% if policy(@subresource_service.build_resource({})).new? %>
+    <%= link_to t("helpers.submit.create", model: t("activerecord.models.course_attachment")), new_course_course_attachment_path(@resource), class: "btn btn-default" %>
+  <% end %>
+</div>
+
+

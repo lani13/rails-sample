@@ -1,0 +1,24 @@
+<%= form_for @resource do |f| %>
+  <% @resource_service.attrs_for_form.each do |attribute| %>
+    <% if f.object.class.reflect_on_association(attribute) %>
+      <%= f.association attribute%>
+    <% elsif attribute == :status || attribute == :question_type %>
+      <%= f.select attribute, options_for_select(get_enums(attribute).map { 
+          |key,value| [I18n.t("activerecord.enums.#{attribute.to_s}.#{key}"),key] 
+        }, selected: @resource.send(attribute.to_s)) %>
+    <% elsif attribute == :attachment %>
+      <%= f.file_field attribute %>
+    <% elsif attribute == :question_content ||  attribute == :page_content %>
+      <%= f.label attribute %><br />
+      <%= f.cktext_area attribute,
+                        ckeditor: { language: I18n.locale, 
+                                    filebrowserImageUploadUrl: "/ckeditor/pictures?assetable_id=#{@resource.id}&assetable_type=#{@resource.class.to_s}",
+                                    filebrowserImageBrowseUrl: "/ckeditor/pictures?assetable_id=#{@resource.id}&assetable_type=#{@resource.class.to_s}"
+                                  } %>
+      <br />
+    <% else %>
+      <%= f.input attribute %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

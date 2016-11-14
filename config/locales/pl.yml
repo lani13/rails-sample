@@ -1,0 +1,116 @@
+pl:
+  account:
+    new:
+      register: Rejestracja
+    login:
+      login: Zaloguj się
+      wrong_email_or_password: Nieprawidłowy email lub hasło
+    form:
+      create: Rejestruj
+    reset_password:
+      reset_password: Nie pamiętasz hasła?
+      reset: "Wyślij mi nowe hasło"
+  activerecord:
+    attributes:
+      course:
+        name: Nazwa
+        short_description: Krótki opis
+        description: Opis
+        price: Cena
+        language_id: Język
+        language: Język
+        group: Grupa
+        status: Status
+        since_activation: Dostępny po aktywacji (dni)
+        since_started: Dostępny po rozpoczęciu (dni)
+        question_type: Typ
+        question: Pytanie
+        attachment: Załącznik
+      question:
+        name: Tytuł
+        description: Treść
+        course_id: Kurs
+        course: Kurs
+        status: Status
+        question_type: Typ
+        correct: Poprawna
+        question_content: Opis
+      answer:
+        name: Treść
+        correct: Poprawna
+        required: Wymagana
+        question_id: Pytanie
+      course_attachment:
+        name: Nazwa
+        attachment: Załącznik
+        course: Kurs
+        course_id: Kurs
+      page:
+        title: Tytuł
+        url: Url
+        language: Język
+        language_id: Język
+        page_content: Zawartość strony
+        meta_description: Meta description
+        meta_content: Meta content
+        active: Aktywna
+      admin_user:
+        email: E-mail
+        password: Hasło
+      user:
+        first_name: Imię
+        last_name: Nazwisko
+        email: E-mail
+        birth_day: Data urodzenia
+    enums:
+      status:
+        disabled: Nieaktywny
+        preview: Podgląd
+        active: Aktywny
+      question_type:
+        question: Pytanie
+        q_content: Podsumowanie
+    models:
+      course: Kurs
+      course_attachment: Załącznik
+      question: Pytanie
+      answer: Odpowiedź
+      page: Strona
+      admin_user: Administrator
+      user: Uczestnik
+  errors:
+    messages:
+      carrierwave_processing_error: "Nie udało się zmienić rozmiaru obrazka"
+      carrierwave_integrity_error: "To nie jest obrazek"
+      carrierwave_download_error: "Nie udało się pobrać obrazka"
+      extension_white_list_error: "Nie można wgrywać pliku z rozszerzeniem %{extension}, dozwolone typy plików: %{allowed_types}"
+      extension_black_list_error: "Nie można wgrywać pliku z rozszerzeniem %{extension}, niedozwolone typy plików: %{prohibited_types}"
+  ckeditor:
+    page_title: 'CKEditor - Menadżer plików'
+    confirm_delete: 'Usunąć plik?'
+    buttons:
+      cancel: 'Anuluj'
+      upload: 'Wgraj'
+      delete: 'Usuń'
+      next: 'Następny'
+  helpers:
+    label:
+      user:
+        first_name: "Imię"
+        last_name: "Nazwisko"
+        birth_day: "Data urodzenia"
+        email: "E-mail"
+        create: Utwórz
+        password: Hasło
+  home:
+    index:
+      select: Wybierz
+  layouts:
+    registered:
+      login: logowanie
+      logout: wyloguj się
+  user_mailer:
+    signup:
+      registered: Zarejestrowaliśmy Twoje konto
+      welcome: Witaj %{first_name}
+      your_password_is: "Twoje hasło to:"

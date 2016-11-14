@@ -1,0 +1,11 @@
+<%= render partial: "breadcrumb" %>
+
+<%= render partial: "errors", locals: { errors: @resource.errors } %>
+
+<% if params[:course_id] %>
+  <%= render partial: "shared/new_form" %>
+<% else %>
+  <%= render partial: "form" %>
+<% end %>
+
+<%= javascript_include_tag Ckeditor.cdn_url %>

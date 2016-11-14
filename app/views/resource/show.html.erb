@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <% @resource_service.attrs_for_show.each do |attr| %>
+    <tr>
+      <th><%= @resource_class.human_attribute_name(attr) %></th>
+      <td>
+        <% if attr == :status || attr == :question_type %>
+          <%= I18n.t("activerecord.enums.#{attr.to_s}.#{@resource.send(attr.to_s)}") %>
+        <% else %>
+          <%= column_value(@resource, attr) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
